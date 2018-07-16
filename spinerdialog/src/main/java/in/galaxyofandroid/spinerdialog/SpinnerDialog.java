@@ -12,6 +12,9 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+
 import java.util.ArrayList;
 
 /**
@@ -26,6 +29,9 @@ public class SpinnerDialog {
     AlertDialog alertDialog;
     int pos;
     int style;
+    TextWatcher textWatch;
+    EditText searchBox;
+    ArrayAdapter<String> adapter;
 
 
     public SpinnerDialog(Activity activity, ArrayList<String> items, String dialogTitle) {
@@ -68,8 +74,8 @@ public class SpinnerDialog {
         rippleViewClose.setText(closeTitle);
         title.setText(dTitle);
         final ListView listView = (ListView) v.findViewById(R.id.list);
-        final EditText searchBox = (EditText) v.findViewById(R.id.searchBox);
-        final ArrayAdapter<String> adapter = new ArrayAdapter<String>(context, R.layout.items_view, items);
+        searchBox = (EditText) v.findViewById(R.id.searchBox);
+        adapter = new ArrayAdapter<String>(context, R.layout.items_view, items);
         listView.setAdapter(adapter);
         adb.setView(v);
         alertDialog = adb.create();
@@ -90,7 +96,7 @@ public class SpinnerDialog {
             }
         });
 
-        searchBox.addTextChangedListener(new TextWatcher() {
+        /*searchBox.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
@@ -105,7 +111,9 @@ public class SpinnerDialog {
             public void afterTextChanged(Editable editable) {
                 adapter.getFilter().filter(searchBox.getText().toString());
             }
-        });
+        });*/
+
+        searchBox.addTextChangedListener(textWatch);
 
         rippleViewClose.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -114,6 +122,28 @@ public class SpinnerDialog {
             }
         });
         alertDialog.show();
+    }
+
+    public String getText() {
+        return searchBox.getText().toString();
+    }
+
+    public void setList(JSONArray jarray, String key) {
+        ArrayList<String> aa = new ArrayList<>();
+        for (int i = 0; i<jarray.length(); i++) {
+            try {
+                aa.add(i, jarray.getJSONObject(i).getString(key));
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+        adapter.clear();
+        adapter.addAll(aa);
+        adapter.notifyDataSetChanged();
+    }
+
+    public void setTextChangedListener(TextWatcher textwatch) {
+        this.textWatch = textwatch;
     }
 
 }
