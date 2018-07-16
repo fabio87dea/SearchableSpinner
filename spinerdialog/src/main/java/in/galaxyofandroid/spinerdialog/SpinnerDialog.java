@@ -96,24 +96,26 @@ public class SpinnerDialog {
             }
         });
 
-        /*searchBox.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+        if(textWatch == null) {
+            searchBox.addTextChangedListener(new TextWatcher() {
+                @Override
+                public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
-            }
+                }
 
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                @Override
+                public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
-            }
+                }
 
-            @Override
-            public void afterTextChanged(Editable editable) {
-                adapter.getFilter().filter(searchBox.getText().toString());
-            }
-        });*/
-
-        searchBox.addTextChangedListener(textWatch);
+                @Override
+                public void afterTextChanged(Editable editable) {
+                    adapter.getFilter().filter(searchBox.getText().toString());
+                }
+            });
+        } else {
+            searchBox.addTextChangedListener(textWatch);
+        }
 
         rippleViewClose.setOnClickListener(new View.OnClickListener() {
             @Override
