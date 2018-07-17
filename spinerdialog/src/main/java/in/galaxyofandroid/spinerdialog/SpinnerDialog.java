@@ -5,6 +5,7 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -14,6 +15,7 @@ import android.widget.TextView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 
@@ -32,6 +34,8 @@ public class SpinnerDialog {
     TextWatcher textWatch;
     EditText searchBox;
     ArrayAdapter<String> adapter;
+    JSONArray array;
+    String keyname;
 
 
     public SpinnerDialog(Activity activity, ArrayList<String> items, String dialogTitle) {
@@ -86,12 +90,30 @@ public class SpinnerDialog {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 TextView t = (TextView) view.findViewById(R.id.text1);
-                for (int j = 0; j < items.size(); j++) {
-                    if (t.getText().toString().equalsIgnoreCase(items.get(j).toString())) {
-                        pos = j;
+                if(textWatch == null) {
+                    for (int j = 0; j < items.size(); j++) {
+                        if (t.getText().toString().equalsIgnoreCase(items.get(j).toString())) {
+                            pos = j;
+                            break;
+                        }
                     }
+                    onSpinerItemClick.onClick(t.getText().toString(), pos);
+                } else {
+                    JSONObject jo = new JSONObject();
+                    for (int j = 0; j < array.length(); j++) {
+                        try {
+                            if (t.getText().toString().equalsIgnoreCase(array.getJSONObject(j).getString(keyname))) {
+                                pos = j;
+                                jo = array.getJSONObject(j);
+                                break;
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                    onSpinerItemClick.onClick(t.getText().toString(), pos, jo);
                 }
-                onSpinerItemClick.onClick(t.getText().toString(), pos);
+
                 alertDialog.dismiss();
             }
         });
@@ -133,6 +155,8 @@ public class SpinnerDialog {
     }
 
     public void setList(JSONArray jarray, String key) {
+        keyname = key;
+        array = jarray;
         ArrayList<String> aa = new ArrayList<>();
         for (int i = 0; i<jarray.length(); i++) {
             try {

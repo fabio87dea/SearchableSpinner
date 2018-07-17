@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<font-family>
+    <nameset>
+        <name>open-sans</name>
+    </nameset>
+    <fileset>
+        <file>open_sans_bold.ttf</file>
+        <file>open_sans_regular.ttf</file>
+    </fileset>
+</font-family>

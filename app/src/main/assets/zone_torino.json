@@ -1,0 +1,81 @@
+{"data":[
+	{
+		"id": 1,
+		"name": "Centro"
+	}, {
+		"id": 2,
+		"name": "Crocetta, San Secondo"
+	}, {
+		"id": 3,
+		"name": "San Salvario"
+	}, {
+		"id": 4,
+		"name": "Borgo Po, Madonna del Pilone, Sassi"
+	}, {
+		"id": 5,
+		"name": "Collina"
+	}, {
+		"id": 6,
+		"name": "Cit Turin"
+	}, {
+		"id": 7,
+		"name": "Cenisia"
+	}, {
+		"id": 8,
+		"name": "San Paolo"
+	}, {
+		"id": 9,
+		"name": "Santa Rita"
+	}, {
+		"id": 10,
+		"name": "Lingotto"
+	}, {
+		"id": 11,
+		"name": "Nizza Millefonti"
+	}, {
+		"id": 12,
+		"name": "Campidoglio, San Donato"
+	}, {
+		"id": 13,
+		"name": "Aurora"
+	}, {
+		"id": 14,
+		"name": "Lungo Po, Vanchiglia, Vanchiglietta"
+	}, {
+		"id": 15,
+		"name": "Barriera di Milano"
+	}, {
+		"id": 16,
+		"name": "Barca, Bertolla"
+	}, {
+		"id": 16,
+		"name": "Rebaudengo, Regio Parco"
+	}, {
+		"id": 17,
+		"name": "Falchera Villaretto"
+	}, {
+		"id": 18,
+		"name": "Borgata Vittoria"
+	}, {
+		"id": 19,
+		"name": "Barriera di Lanzo"
+	}, {
+		"id": 19,
+		"name": "Madonna di Campagna"
+	}, {
+		"id": 20,
+		"name": "Le Vallette, Lucento"
+	}, {
+		"id": 21,
+		"name": "Parella"
+	}, {
+		"id": 22,
+		"name": "Pozzo Strada"
+	}, {
+		"id": 23,
+		"name": "Mirafiori Nord, Centro Europa"
+	}, {
+		"id": 24,
+		"name": "Mirafiori Sud"
+	}
+]}
