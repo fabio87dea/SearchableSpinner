@@ -96,7 +96,7 @@ public class SpinnerDialog {
             }
         });
 
-        if(textWatch == null) {
+        if(textWatch == null && searchBox != null) {
             searchBox.addTextChangedListener(new TextWatcher() {
                 @Override
                 public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -114,7 +114,9 @@ public class SpinnerDialog {
                 }
             });
         } else {
-            searchBox.addTextChangedListener(textWatch);
+            if(searchBox != null) {
+                searchBox.addTextChangedListener(textWatch);
+            }
         }
 
         rippleViewClose.setOnClickListener(new View.OnClickListener() {

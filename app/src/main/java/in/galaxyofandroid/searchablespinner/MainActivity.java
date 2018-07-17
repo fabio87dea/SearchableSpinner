@@ -22,7 +22,6 @@ public class MainActivity extends AppCompatActivity {
 
         final TextView selectedItems = (TextView) findViewById(R.id.txt);
 
-
         items.add("Mumbai");
         items.add("Delhi");
         items.add("Bengaluru");
